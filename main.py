@@ -123,8 +123,8 @@ class ImageClickApp:
 
                     # 点击的坐标随机偏移范围为±2
                     click_x, click_y = self.click_positions[img_path]
-                    offset_x = random.randint(-2, 2)
-                    offset_y = random.randint(-2, 2)
+                    offset_x = random.uniform(-20, 20)
+                    offset_y = random.uniform(-20, 20)
                     random_click_x = click_x + offset_x
                     random_click_y = click_y + offset_y
                     self.append_debug_info(f"点击位置 {random_click_x}, {random_click_y} (原始坐标: {click_x}, {click_y}，偏移: {offset_x}, {offset_y})")
