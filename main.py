@@ -117,22 +117,43 @@ class ImageClickApp:
                 threshold = 0.8  # 匹配的阈值
                 if max_val >= threshold:
                     # 找到图片后，添加随机延迟点击时间
-                    delay = random.uniform(0.5, 3)
+                    delay = random.uniform(0, 0.5)
                     self.append_debug_info(f"检测到图片 {img_path}，将在 {delay:.2f} 秒后点击")
                     time.sleep(delay)
 
-                    # 点击的坐标随机偏移范围为±2
+                    # 点击的坐标随机偏移范围为±20小数
                     click_x, click_y = self.click_positions[img_path]
-                    offset_x = random.uniform(-20, 20)
-                    offset_y = random.uniform(-20, 20)
+                    offset_x = random.uniform(-40, 40)  # 生成 -20 到 20 的小数偏移
+                    offset_y = random.uniform(-40, 40)  # 生成 -20 到 20 的小数偏移
                     random_click_x = click_x + offset_x
                     random_click_y = click_y + offset_y
-                    self.append_debug_info(f"点击位置 {random_click_x}, {random_click_y} (原始坐标: {click_x}, {click_y}，偏移: {offset_x}, {offset_y})")
-                    pyautogui.click(random_click_x, random_click_y)
+
+                    # 平滑移动鼠标到目标位置，移动时间为0-2秒
+                    move_duration = random.uniform(0, 2)  # 随机生成移动时间
+                    self.append_debug_info(
+                        f"平滑移动到位置 {random_click_x:.2f}, {random_click_y:.2f} (原始坐标: {click_x}, {click_y}，偏移: {offset_x:.2f}, {offset_y:.2f})，移动时长: {move_duration:.2f} 秒")
+                    pyautogui.moveTo(random_click_x, random_click_y, duration=move_duration)
+
+                    # 点击目标位置
+                    pyautogui.click()
+                    more = random.uniform(0, 100)
+                    if more >= 80:
+                        offset_x = random.uniform(-40, 40)  # 生成 -20 到 20 的小数偏移
+                        offset_y = random.uniform(-40, 40)  # 生成 -20 到 20 的小数偏移
+                        random_click_x = random_click_x + offset_x
+                        random_click_x = random_click_x + offset_y
+                        # 平滑移动鼠标到目标位置，移动时间为0-2秒
+                        move_duration = random.uniform(0, 1)  # 随机生成移动时间
+                        self.append_debug_info(
+                            f"触发再次点击 {random_click_x:.2f}, {random_click_y:.2f} (原始坐标: {click_x}, {click_y}，偏移: {offset_x:.2f}, {offset_y:.2f})，移动时长: {move_duration:.2f} 秒")
+                        pyautogui.moveTo(random_click_x, random_click_y, duration=move_duration)
+
+                        # 点击目标位置
+                        pyautogui.click()
                 else:
                     self.append_debug_info(f"未检测到图片 {img_path}，匹配值: {max_val}")
 
-                time.sleep(1)  # 每次检测间隔1秒
+            time.sleep(1)  # 每次检测间隔1秒
 
     def display_uploaded_images(self):
         """显示所有已上传的图片"""
