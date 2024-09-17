@@ -50,15 +50,13 @@ class ImageClickApp:
         self.waiting_for_v = False
 
         # 创建监听器线程
-        self.create_esc_listener()
+        # self.create_esc_listener()
 
     def append_debug_info(self, message):
         """将调试信息追加到Text控件中"""
         self.debug_text.insert(tk.END, message + "\n")
         self.debug_text.see(tk.END)  # 自动滚动到最后
-        # 控制日志最多显示100条记录
-        if self.debug_text.index('end-1c').split('.')[0] > '100':
-            self.debug_text.delete(1.0, 2.0)  # 删除最早的一条记录
+
 
     def upload_images(self):
         # 选择多张图片
@@ -102,6 +100,8 @@ class ImageClickApp:
         self.append_debug_info("开始识别并点击...")
         recognition_thread = threading.Thread(target=self.recognize_and_click)
         recognition_thread.start()
+        # 创建监听器线程
+        self.create_esc_listener()
 
     def recognize_and_click(self):
         with mss.mss() as sct:
