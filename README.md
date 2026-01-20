@@ -14,15 +14,15 @@ F:/folder/yysScript √
 
 1. 将文件夹中**dist**目录下的**yysScript v1.5.exe**点击打开，得到以下软件界面
 
-   ![image-20260120132232358](D:\git_clone\yysScript\README\image-20260120132232358.png)
+   ![image-20260120132232358.png](https://github.com/aplainjane/yysScript/blob/main/README/image-20260120132232358.png?raw=true)
 
 2. 点击上传图片，截取图片（**图片所在目录与名称也必须不包含中文字符**）并上传，上传后界面不会有任何变化，此时需要移动鼠标到需要按下的地方按下`v`键，此时会记录坐标位置：
 
-   ![image-20260120132715345](D:\git_clone\yysScript\README\image-20260120132715345.png)
+   ![image-20260120132715345.png](https://github.com/aplainjane/yysScript/blob/main/README/image-20260120132715345.png?raw=true)
 
 3. 重复上述流程，记录打完一整个副本的过程需要按到的位置（识别到悬赏委托图片需要在哪里按下关闭、打完按哪里执行下一步）**每次传完识别的图片后都要按v记录位置**
 
-   ![image-20260120133046082](D:\git_clone\yysScript\README\image-20260120133046082.png)
+   ![image-20260120133046082.png](https://github.com/aplainjane/yysScript/blob/main/README/image-20260120133046082.png?raw=true)
 
 4. 随后点击开始识别点击即可开始进行循环
 
